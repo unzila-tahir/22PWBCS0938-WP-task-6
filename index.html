@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport " content="width=device-width , initial-scale=1.0">
+    <title> online Library Management System</title>
+
+
+
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif ;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background-color: goldenrod;
+            border: black;
+            border-radius: 50%;
+            
+            
+    
+        }
+        .book-list ,.add-book , .serach-book{
+            width: 30%;
+            padding: 20px;
+            border: 10px ,solid #272525;
+            margin: 10px;
+        }
+        ul{
+            list-style: none;
+    
+        }
+        li{
+            margin-bottom:10px;
+            color: white;
+    
+        }
+        button{
+            margin-top: 10px;
+            color: white;
+            background-color: black;
+        }
+        h2
+        {font-family: cursive;
+        }
+
+        input{
+            background-color: black;
+            
+                }
+    </style>
+
+</head>
+
+<body>
+    <div class="container" >
+        <div class="book-list">
+            <h2> BOOK LIST</h2>
+            <ul id="book-list">
+                <li> Janat K Patty by Author 1</li>
+                <li>  Mushaf by Author 2</li>
+                <li> Peer-E- Kamil by Author 3</li>
+
+            </ul>
+
+        </div>
+
+        <div class="add-book">
+            <h2> ADD NEW BOOK</h2>
+            <input type="text " id="Book-title" placeholder="Book-Title">
+            <input type="text " id="author" placeholder="Author">
+            <button onclick="addbook()">Add Book</button>
+
+        </div>
+
+        <div class="serach-book">
+            <h2 >SEARCH BOOKS</h2>
+            <input type="text" id="serach-input" placeholder="Serach by title or author">
+            <button onclick="searchBook()">Search </button>
+            <Ul id="search result "> </Ul>
+
+        </div>
+
+    </div>
+
+    <script>
+        const BookList =document.getElementById('book-list');
+        const searchResults= document.getElementById('search-results');
+
+        let books=[];
+
+        function renderBookList(){
+            bookList.innerHTML="";
+            books.forEach( book=>{
+                const li=document.createElement('li');
+                li.textContent='${book.title} by ${book.author} ';
+                bookList.appendChild(li);
+            });
+
+        }
+        function addbook(){
+            const title=document.getElementById('book-title').value;
+            const author = document.getElementById('author').value;
+
+            if(title && author && !books.some(book => book.title===title && book.author === author)){
+                const newBook ={
+                    title:tilte,
+                    author :author
+                };
+                book.push(newBook);
+                renderBookList();
+
+            }
+            else{
+                alert('Duplicate entry or invalid input!');
+            }
+        
+            
+        }
+        function searchBook(){
+            const serachInput = document.getElementById('search-input').value.toLowerCase();
+            const result = book.filter(book => book.title.toLowerCaes().include( searchInput) || book.author.toLower.Case().includes(searchInput));
+            displaySearchResult(results); 
+        }
+        function  displaySearchResults(results){
+            searchResults.innerHTML="";
+            results.forEach(result =>{
+                const li = document.createElement('li');
+                li.textContent='${result.title} by ${result.author}';
+                searchResults.appendChild(li);
+            })
+        }
+    </script>
+</body>
+
+</html>
